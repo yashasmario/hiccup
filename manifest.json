@@ -1,0 +1,14 @@
+{
+    "name": "hiccup",
+    "description": "smart note-taking extension",
+    "version": "0.0",
+    "manifest_version": 3,
+
+    "action":{
+        "default_popup": "popup/popup.html",
+        "default_icon": ""
+    },
+    // test with just youtube first
+    // "host_permission":["https://youtube.com/*"],
+    "permissions":["tabs"]
+}
