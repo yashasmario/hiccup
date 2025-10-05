@@ -75,9 +75,32 @@ export class Note {
             this.save(this.folderID);
         }else throw new Error("Missing Path");
     }
+
+    async generateEmbedding(apiKey: string) {
+        const response = await fetch('https://api.openai.com/v1/embeddings', {
+            method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            model: 'text-embedding-3-small',
+            input: this.content
+        })
+        });
+
+        const data = await response.json();
+        this.embedding = data.data[0].embedding;
+    }
 }
 
-export function addNote(title: string, path: string){
+export function createNote(title: string, path: string){
     const note = new Note(title, path);
     return note.id;
+}
+
+export function cosineSimilarity(a: number[], b: number[]): number { const dot = a.reduce((sum, val, i) => sum + val * b[i], 0);
+    const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+    const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+    return dot / (magA * magB);
 }
