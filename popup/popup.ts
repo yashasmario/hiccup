@@ -1,1 +1,1 @@
-let a = 1;
+chrome.runtime.sendMessage({type: "popupOpened"});

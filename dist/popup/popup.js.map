@@ -1,0 +1,1 @@
+{"version":3,"file":"popup/popup.js","mappings":";;;;;AAAA;AACA","sources":["webpack://hiccup/./popup/popup.ts"],"sourcesContent":["\"use strict\";\nchrome.runtime.sendMessage({ type: \"popupOpened\" });\n"],"names":[],"sourceRoot":""}
